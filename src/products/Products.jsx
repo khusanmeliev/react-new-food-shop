@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   Card,
-  Cards,
   CountAmount,
   Image,
   Navbar,

@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Text from "../components/Text/Text";
-import { products } from "../mock/products";
 import {
   Amount,
   Box,
