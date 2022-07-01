@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Flexbox from "../components/Flexbox/Flexbox";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -10,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   background-color: white;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     height: auto;
   }
 `;
@@ -28,7 +27,7 @@ export const Title = styled.div`
   color: white;
   border-bottom: 2px solid white;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 100%;
     font-size: 30px;
   }
@@ -43,7 +42,7 @@ export const Box = styled.div`
   margin: 10px;
   background-color: white;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 90%;
     height: 400px;
     flex-direction: column;
@@ -56,7 +55,7 @@ export const Image = styled.img`
   height: 100%;
   background-color: pink;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 100%;
     height: 200px;
     border-radius: 8px 8px 0px 0px;
@@ -71,7 +70,7 @@ export const Name = styled.div`
   font-size: 35px;
   font-weight: 700;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 100%;
     height: auto;
   }
@@ -85,13 +84,13 @@ export const Count = styled.div`
   justify-content: space-around;
   flex-direction: row;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 70%;
     height: 20%;
   }
 `;
 
-export const Button = styled(Flexbox)`
+export const Button = styled.button`
   width: 60px;
   height: 40px;
   font-size: 20px;
@@ -99,6 +98,8 @@ export const Button = styled(Flexbox)`
   color: white;
   cursor: pointer;
   border-radius: 8px;
+  border: none;
+  outline: none;
 `;
 
 export const Amount = styled.div`
@@ -114,7 +115,7 @@ export const Amount = styled.div`
     margin: 20px;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 100%;
     justify-content: center;
   }
@@ -141,7 +142,7 @@ export const TotalPrice = styled.div`
     border-radius: 8px;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     text-align: center;
     font-size: 15px;
 
@@ -160,7 +161,7 @@ export const Cards = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     width: 100%;
   } ;
 `;

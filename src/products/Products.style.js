@@ -18,7 +18,7 @@ export const Navbar = styled.div`
   justify-content: flex-end;
   gap: 100px;
 
-  @media (max-width: 320px) {
+  @media (max-width: 350px) {
     gap: 20px;
     font-size: 10px;
   }
@@ -30,8 +30,8 @@ export const Card = styled(Flexbox)`
   border: 2px solid black;
   margin: 30px;
 
-  @media (max-width: 320px) {
-    width: 300px;
+  @media (max-width: 350px) {
+    width: 100%;
   }
 `;
 
