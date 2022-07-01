@@ -37,37 +37,33 @@ function App() {
         <h1 style={{ marginRight: "50px" }}>price: {sum}</h1>
       </Navbar>
       {products.map((product) => (
-        <li key={product.id} style={{ listStyleType: "none" }}>
-          <Card>
-            <Flexbox width="100%" height="20%" gap="10px" flexDirection="row">
-              <h3 style={{ gap: "10px" }}>{product.name}</h3>
-              <h3> {product.amount}</h3>
-            </Flexbox>
-            <Image src={product.pics} />
+        <Card key={product.id}>
+          <Flexbox width="100%" height="20%" gap="10px" flexDirection="row">
+            <h3 style={{ gap: "10px" }}>{product.name}</h3>
+            <h3> {product.amount}</h3>
+          </Flexbox>
+          <Image src={product.pics} />
 
-            <Price>
-              <h1>{product.price}</h1>
-              {product.amount === 0 ? (
-                <Button onClick={() => handleAdd(product.id, product.price)}>
-                  add to cart
+          <Price>
+            <h1>{product.price}</h1>
+            {product.amount === 0 ? (
+              <Button onClick={() => handleAdd(product.id, product.price)}>
+                add to cart
+              </Button>
+            ) : (
+              <CountAmount>
+                <Button onClick={() => handleRemove(product.id, product.price)}>
+                  -
                 </Button>
-              ) : (
-                <CountAmount>
-                  <Button
-                    onClick={() => handleRemove(product.id, product.price)}
-                  >
-                    -
-                  </Button>
-                  <Text fontSize="20px">{product.amount}</Text>
+                <Text fontSize="20px">{product.amount}</Text>
 
-                  <Button onClick={() => handleAdd(product.id, product.price)}>
-                    +
-                  </Button>
-                </CountAmount>
-              )}
-            </Price>
-          </Card>
-        </li>
+                <Button onClick={() => handleAdd(product.id, product.price)}>
+                  +
+                </Button>
+              </CountAmount>
+            )}
+          </Price>
+        </Card>
       ))}
     </Wrapper>
   );
