@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Inputs, Wrapper } from "./Register.style";
 import Heading from "../../components/Heading/Heading";
-import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
