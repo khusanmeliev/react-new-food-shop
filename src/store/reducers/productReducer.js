@@ -1,5 +1,4 @@
 import { products } from "../../mock/products";
-
 const initialState = {
   products: products,
   sum: 0,

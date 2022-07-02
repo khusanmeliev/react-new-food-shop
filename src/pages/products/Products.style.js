@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Flexbox from "../components/Flexbox/Flexbox";
+import Flexbox from "../../components/Flexbox/Flexbox";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ export const Navbar = styled.div`
   justify-content: flex-end;
   gap: 100px;
 
-  @media (max-width: 350px) {
+  @media (max-width: 400px) {
     gap: 20px;
     font-size: 10px;
   }
@@ -30,7 +30,7 @@ export const Card = styled(Flexbox)`
   border: 2px solid black;
   margin: 30px;
 
-  @media (max-width: 350px) {
+  @media (max-width: 400px) {
     width: 100%;
   }
 `;

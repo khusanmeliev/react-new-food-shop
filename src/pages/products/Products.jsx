@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Flexbox from "../../components/Flexbox/Flexbox";
+import Text from "../../components/Text/Text";
 import {
   Button,
   Card,
@@ -9,8 +11,6 @@ import {
   Price,
   Wrapper,
 } from "./Products.style";
-import Flexbox from "../components/Flexbox/Flexbox";
-import Text from "../components/Text/Text";
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -36,7 +36,8 @@ function App() {
         <h1>Basket: {sumOfAmounts}</h1>
         <h1 style={{ marginRight: "50px" }}>price: {sum}</h1>
       </Navbar>
-      {products.map((product) => (
+
+      {products?.map((product) => (
         <Card key={product.id}>
           <Flexbox width="100%" height="20%" gap="10px" flexDirection="row">
             <h3 style={{ gap: "10px" }}>{product.name}</h3>
