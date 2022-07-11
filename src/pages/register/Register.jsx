@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, Inputs, Wrapper } from "./Register.style";
+import { BottomText, Form, Inputs, Wrapper } from "./Register.style";
 import Heading from "../../components/Heading/Heading";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const initialState = {
   name: "",
@@ -10,15 +12,19 @@ const initialState = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    localStorage.setItem("userData", JSON.stringify(values));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    navigate("/login");
     console.log(values);
   };
 
@@ -48,7 +54,7 @@ const Register = () => {
             value={values.phone_number}
             autoComplete="off"
             required
-            maxLength={13}
+            maxLength={17}
             minLength={9}
           />
           <input
@@ -77,6 +83,9 @@ const Register = () => {
           />
         </Inputs>
         <Button>Register</Button>
+        <BottomText>
+          Akkauntingiz bormi? <a href="/login">Login</a>
+        </BottomText>
       </Form>
     </Wrapper>
   );

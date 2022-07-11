@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Text from "../../components/Text/Text";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -59,4 +60,20 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 16px;
   color: #3d3d3b;
+`;
+
+export const BottomText = styled(Text)`
+  margin-left: 150px;
+  font-size: 15px;
+  color: grey;
+
+  a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+  }
+
+  @media (max-width: 600px) {
+    margin-left: 100px;
+  }
 `;

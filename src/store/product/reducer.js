@@ -1,20 +1,27 @@
-import { products } from "../../mock/products";
 const initialState = {
-  products: products,
+  products: [],
   sum: 0,
-  basket: 0,
 };
 
-const reducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TO_BASKET":
+    case "GET_PRODUCTS":
+      return {
+        ...state,
+        products: action.payload.map((product) => {
+          return { ...product, id: product._id, amount: 0, added: false };
+        }),
+        sum: 0,
+      };
+
+    case "INCREMENT":
       return {
         products: state.products.map((product) => {
           if (product.id === action.payload.productId) {
             return {
               ...product,
-              added: true,
               amount: product.amount + 1,
+              added: true,
             };
           }
           return product;
@@ -22,7 +29,7 @@ const reducer = (state = initialState, action) => {
         sum: state.sum + action.payload.price,
       };
 
-    case "REMOVE_FROM_BASKET":
+    case "DECREMENT":
       return {
         products: state.products.map((product) => {
           if (product.id === action.payload.productId) {
@@ -34,10 +41,8 @@ const reducer = (state = initialState, action) => {
               amount: product.amount - 1,
             };
           }
-
           return product;
         }),
-
         sum: state.sum - action.payload.price,
       };
 
@@ -46,4 +51,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default productReducer;

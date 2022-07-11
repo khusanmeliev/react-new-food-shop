@@ -1,10 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "../../components/Button/Button";
 import Text from "../../components/Text/Text";
+import {
+  decrementProduct,
+  incrementProduct,
+} from "../../store/product/actions";
 import {
   Amount,
   Box,
-  Button,
   Cards,
   Count,
   Image,
@@ -20,19 +24,11 @@ function Basket() {
   const products = useSelector((state) => state.products);
   const sum = useSelector((state) => state.sum);
 
-  const handleAdd = (productId, price) => {
-    dispatch({ type: "ADD_TO_BASKET", payload: { productId, price } });
-  };
-
-  const handleRemove = (productId, price) => {
-    dispatch({ type: "REMOVE_FROM_BASKET", payload: { productId, price } });
-  };
-
   return (
     <Wrapper>
       <Title>Basket</Title>
       <Cards>
-        {products.map(
+        {products?.map(
           (prod) =>
             prod.added && (
               <>
@@ -40,11 +36,19 @@ function Basket() {
                   <Image src={prod.pics} />
                   <Name>{prod.name}</Name>
                   <Count>
-                    <Button onClick={() => handleRemove(prod.id, prod.price)}>
+                    <Button
+                      onClick={() =>
+                        dispatch(incrementProduct(prod.id, prod.price))
+                      }
+                    >
                       -
                     </Button>
                     <Text fontSize="25px">{prod.amount}</Text>
-                    <Button onClick={() => handleAdd(prod.id, prod.price)}>
+                    <Button
+                      onClick={() =>
+                        dispatch(decrementProduct(prod.id, prod.price))
+                      }
+                    >
                       +
                     </Button>
                   </Count>
@@ -58,9 +62,9 @@ function Basket() {
 
         <TotalPrice>
           <h1>Total Price - {sum} so'm</h1>
-          <button>
+          <Button>
             {sum === 0 ? "Biror narsa harid qiling" : "Buyurtma berish"}
-          </button>
+          </Button>
         </TotalPrice>
       </Cards>
     </Wrapper>

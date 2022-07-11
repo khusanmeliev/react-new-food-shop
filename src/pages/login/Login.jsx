@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form, Inputs, Wrapper } from "./Login.style";
 import Heading from "../../components/Heading/Heading";
+import authApi from "../../api/authApi";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux/es/exports";
 
 const initialState = {
   phone_number: "",
@@ -8,16 +11,27 @@ const initialState = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    localStorage.setItem("userData", JSON.stringify(values));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(values);
+    authApi
+      .login(values)
+      .then((res) => {
+        localStorage.setItem("token", res.data.user.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        dispatch({ type: "LOGIN", payload: res.data.user });
+        navigate("/");
+      })
+      .catch((err) => console.log(err.response.data));
   };
 
   return (
