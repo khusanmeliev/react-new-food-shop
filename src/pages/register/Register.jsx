@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { BottomText, Form, Inputs, Wrapper } from "./Register.style";
+import {
+  BottomText,
+  Form,
+  Inputs,
+  RegisterInput,
+  Wrapper,
+} from "./Register.style";
 import Heading from "../../components/Heading/Heading";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import authApi from "../../api/authApi";
 
 const initialState = {
-  name: "",
-  phone_number: "",
+  username: "",
+  phoneNumber: "",
   password: "",
-  confirm_password: "",
+  confirmPassword: "",
 };
 
 const Register = () => {
@@ -23,66 +30,54 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    navigate("/login");
-    console.log(values);
+    authApi
+      .register(values)
+      .then((res) => {
+        alert(res.data.message);
+        navigate("/login");
+      })
+      .catch((err) => alert(err.response.data.message));
   };
 
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit}>
         <Heading color="white">Register</Heading>
-        <Inputs>
-          <input
-            id="name"
-            type="text"
-            placeholder="Name"
-            name="name"
-            onChange={handleChange}
-            value={values.name}
-            autoComplete="off"
-            required
-            maxLength={12}
-            minLength={3}
-          />
-          <input
-            id="phone_number"
-            type="tel"
-            placeholder="Phone number"
-            name="phone_number"
-            onChange={handleChange}
-            value={values.phone_number}
-            autoComplete="off"
-            required
-            maxLength={17}
-            minLength={9}
-          />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-            value={values.password}
-            autoComplete="off"
-            required
-            maxLength={12}
-            minLength={6}
-          />
-          <input
-            id="confirm_password"
-            type="password"
-            placeholder="Confirm Password"
-            name="confirm_password"
-            onChange={handleChange}
-            values={values.confirm_password}
-            autoComplete="off"
-            required
-            maxLength={12}
-            minLength={6}
-          />
-        </Inputs>
-        <Button>Register</Button>
+        <RegisterInput
+          id="username"
+          type="text"
+          placeholder="Name"
+          name="username"
+          onChange={handleChange}
+          value={values.username}
+        />
+        <RegisterInput
+          id="phoneNumber"
+          type="tel"
+          placeholder="Phone number"
+          name="phoneNumber"
+          onChange={handleChange}
+          value={values.phoneNumber}
+        />
+        <RegisterInput
+          id="password"
+          type="password"
+          placeholder="Password"
+          name="password"
+          onChange={handleChange}
+          value={values.password}
+        />
+        <RegisterInput
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          onChange={handleChange}
+          values={values.confirmPassword}
+        />
+        <Button wd="30%" hg="40px">
+          Register
+        </Button>
         <BottomText>
           Akkauntingiz bormi? <a href="/login">Login</a>
         </BottomText>

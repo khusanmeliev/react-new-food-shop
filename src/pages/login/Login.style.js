@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Input } from "../../components/Input/Input";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 450px;
+  width: 430px;
   height: 400px;
   background-color: #3d3d3b;
   display: flex;
@@ -23,40 +24,20 @@ export const Form = styled.form`
   }
 `;
 
-export const Inputs = styled.div`
-  width: 80%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+export const LoginInput = styled(Input)`
+  width: 70%;
+  height: 40px;
+  margin: 20px;
+  border-bottom: 1px solid white;
+  background-color: inherit;
+  color: white;
 
-  input {
-    width: 90%;
-    height: 40px;
-    margin: 20px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid white;
-    background-color: inherit;
+  ::placeholder {
+    color: grey;
+  }
+  :focus {
     color: white;
-
-    ::placeholder {
-      color: grey;
-    }
-    :focus {
-      color: white;
-      border-bottom: 1px solid black;
-    }
+    border-bottom: 1px solid black;
   }
 `;
 
-export const Button = styled.button`
-  width: 30%;
-  height: 40px;
-  background-color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-  color: #3d3d3b;
-`;

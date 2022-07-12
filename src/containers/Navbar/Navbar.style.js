@@ -6,7 +6,7 @@ export const NavbarWrapper = styled.div`
   background-color: green;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 export const Area = styled.div`
@@ -22,6 +22,7 @@ export const Input = styled.div`
   width: 400px;
   height: 50px;
 `;
+
 export const Button = styled.div`
-  width: 200px;
+  width: 220px;
 `;

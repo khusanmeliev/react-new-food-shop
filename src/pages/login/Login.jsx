@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Button, Form, Inputs, Wrapper } from "./Login.style";
+import { Form, LoginInput, Wrapper } from "./Login.style";
 import Heading from "../../components/Heading/Heading";
-import authApi from "../../api/authApi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux/es/exports";
+import { login } from "../../store/user/actions";
+import Button from "../../components/Button/Button";
 
 const initialState = {
-  phone_number: "",
+  phoneNumber: "",
   password: "",
 };
 
@@ -23,48 +24,31 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    authApi
-      .login(values)
-      .then((res) => {
-        localStorage.setItem("token", res.data.user.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        dispatch({ type: "LOGIN", payload: res.data.user });
-        navigate("/");
-      })
-      .catch((err) => console.log(err.response.data));
+    dispatch(login(values));
+    navigate("/");
   };
 
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit}>
         <Heading color="white">Login</Heading>
-        <Inputs>
-          <input
-            id="phone_number"
-            type="tel"
-            placeholder="Phone number"
-            name="phone_number"
-            onChange={handleChange}
-            value={values.phone_number}
-            autoComplete="off"
-            required
-            maxLength={17}
-            minLength={9}
-          />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-            value={values.password}
-            autoComplete="off"
-            required
-            maxLength={12}
-            minLength={6}
-          />
-        </Inputs>
-        <Button>Register</Button>
+        <LoginInput
+          id="phoneNumber"
+          type="tel"
+          placeholder="Phone number"
+          name="phoneNumber"
+          onChange={handleChange}
+          value={values.phoneNumber}
+        />
+        <LoginInput
+          id="password"
+          type="password"
+          placeholder="Password"
+          name="password"
+          onChange={handleChange}
+          value={values.password}
+        />
+        <Button wd="100px">Register</Button>
       </Form>
     </Wrapper>
   );

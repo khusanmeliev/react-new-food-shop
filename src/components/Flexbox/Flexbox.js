@@ -8,8 +8,8 @@ const Flexbox = styled.div`
   align-items: ${({ alignItems }) => alignItems || "center"};
   gap: ${({ gap }) => gap};
   flex-wrap: ${({ flexWrap }) => flexWrap};
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+  width: ${({ wd }) => wd};
+  height: ${({ hg }) => hg};
 `;
 
 export default Flexbox;
