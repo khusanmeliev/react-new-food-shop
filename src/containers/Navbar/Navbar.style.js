@@ -12,10 +12,10 @@ export const NavbarWrapper = styled.div`
 export const Area = styled.div`
   width: 80%;
   height: 100%;
-  background-color: red;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 15px;
 `;
 
 export const Input = styled.div`

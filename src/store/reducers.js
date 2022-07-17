@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import user from "../store/user/reducer";
-import product from "../store/product/reducer";
+import user from "./user/reducer";
+import product from "./product/reducer";
+import orders from "./order/reducer";
 
 export default combineReducers({
   user,
   product,
+  orders,
 });

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  BottomText,
-  Form,
-  Inputs,
-  RegisterInput,
-  Wrapper,
-} from "./Register.style";
+import { BottomText, Form, RegisterInput, Wrapper } from "./Register.style";
 import Heading from "../../components/Heading/Heading";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";

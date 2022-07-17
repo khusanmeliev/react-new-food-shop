@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
-import Flexbox from "../../components/Flexbox/Flexbox";
 import Text from "../../components/Text/Text";
 import Heading from "../../components/Heading/Heading";
 
@@ -11,7 +10,13 @@ import {
   incrementProduct,
 } from "../../store/product/actions";
 
-import { Card, CountAmount, Image, Wrapper } from "./Products.style";
+import {
+  Card,
+  CardImage,
+  CountAmount,
+  Description,
+  Wrapper,
+} from "./Products.style";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -25,19 +30,20 @@ const Products = () => {
     <Wrapper>
       {products?.map((product) => (
         <Card key={product.id}>
-          <Image src={product.picture} />
-          <Heading size="24px" align="start">
-            {product.name}
-          </Heading>
+          <CardImage src={product.picture} />
+          <Description>
+            <Heading size="24px" alignItems="flex-start">
+              {product.name}
+            </Heading>
+            {/* <Text align="start">{product.description}</Text> */}
+          </Description>
 
-          <Text align="start">{product.description}</Text>
-
-          <Flexbox wd="100%" flexDirection="row" justifyContent="space-around">
-            <Text fontSize="25px">{product.price} so'm</Text>
+          <CountAmount>
+            <Text fontSize="20px">{product.price} so'm</Text>
             {product.amount === 0 ? (
               <Button
-                wd="160px"
-                style={{ fontSize: "20px" }}
+                wd="140px"
+                style={{ fontSize: "15px" }}
                 onClick={() =>
                   dispatch(incrementProduct(product.id, product.price))
                 }
@@ -45,29 +51,27 @@ const Products = () => {
                 add to cart
               </Button>
             ) : (
-              <CountAmount>
+              <>
                 <Button
                   wd="40px"
-                  style={{ fontSize: "20px" }}
                   onClick={() =>
                     dispatch(decrementProduct(product.id, product.price))
                   }
                 >
                   -
                 </Button>
-                <Text fontSize="20px">{product.amount}</Text>
+                <Text fontSize="15px">{product.amount}</Text>
                 <Button
                   wd="40px"
-                  style={{ fontSize: "20px" }}
                   onClick={() =>
                     dispatch(incrementProduct(product.id, product.price))
                   }
                 >
                   +
                 </Button>
-              </CountAmount>
+              </>
             )}
-          </Flexbox>
+          </CountAmount>
         </Card>
       ))}
     </Wrapper>

@@ -1,12 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Admin from "./pages/Dashboard/Admin";
+import { useSelector } from "react-redux";
 import Products from "./pages/Products/Products";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Navbar from "./containers/Navbar/Navbar";
-
+import AdminRoutes from "./components/AdminRoutes";
+import Orders from "./pages/Dashboard/Orders/Orders";
+import EditProducts from "./pages/Dashboard/EditProducts/EditProducts";
 const Main = () => (
   <>
     <Navbar />
@@ -15,17 +17,23 @@ const Main = () => (
 );
 
 function App() {
+  const userRole = useSelector((state) => state.user.role);
+
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/admin" element={<Admin />} />
+    <Routes>
+      <Route path="/" element={<Main />} />
+
+      {userRole === "admin" && (
+        <Route path="/admin" element={<AdminRoutes />}>
+          <Route index element={<Orders />} />
+          <Route path="edit-products" element={<EditProducts />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </div>
+      )}
+
+      <Route element={<PrivateRoute />}></Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 }
 
