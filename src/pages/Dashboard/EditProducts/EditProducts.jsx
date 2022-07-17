@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../../store/product/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { BiEditAlt } from "react-icons/bi";
-import Modal from "../../../Modal/Modal";
+import Modal from "../../../modal/Modal";
 import useToggle from "../../../hooks/useToggle";
 import { Table, Wrapper } from "./EditProducts.style";
 import Heading from "../../../components/Heading/Heading";
+import Edit from "../../../modal/Edit/Edit";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const Products = () => {
         </tbody>
       </Table>
       <Modal isOpen={modal.isOpen} onClose={modal.close}>
-        {/* <Edit product={product} modal={modal} /> */}
+        <Edit product={product} modal={modal} />
       </Modal>
     </Wrapper>
   );

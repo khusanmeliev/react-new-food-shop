@@ -22,13 +22,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-
-      {userRole === "admin" && (
-        <Route path="/admin" element={<AdminRoutes />}>
-          <Route index element={<Orders />} />
-          <Route path="edit-products" element={<EditProducts />} />
-        </Route>
-      )}
+      {/* {userRole === "admin" && ( */}
+      <Route path="/admin" element={<AdminRoutes />}>
+        <Route index element={<Orders />} />
+        <Route path="edit-products" element={<EditProducts />} />
+      </Route>
+      {/* )} */}
 
       <Route element={<PrivateRoute />}></Route>
       <Route path="/login" element={<Login />} />
