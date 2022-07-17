@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -23,7 +24,6 @@ export const SidebarToggler = styled.div`
   position: absolute;
   top: 20px;
   right: -16px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,7 @@ export const SidebarToggler = styled.div`
   cursor: pointer;
 `;
 
-export const StyledLink = styled.div`
+export const StyledLink = styled(Link)`
   display: flex;
   gap: 10px;
   justify-content: start;
@@ -40,6 +40,7 @@ export const StyledLink = styled.div`
   color: white;
   text-decoration: none;
   cursor: pointer;
+  text-decoration: none;
 
   svg {
     font-size: 26px;

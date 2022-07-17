@@ -4,7 +4,7 @@ import { AiOutlineDoubleLeft, AiOutlinePlusCircle } from "react-icons/ai";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { SidebarToggler, StyledLink, Wrapper } from "./Sidebar.style";
 import Heading from "../../../components/Heading/Heading";
-import Modal from "../../../Modal/Modal";
+import Modal from "../../../modal/Modal";
 import Flexbox from "../../../components/Flexbox/Flexbox";
 import useToggle from "../../../hooks/useToggle";
 
@@ -17,12 +17,18 @@ const Sidebar = () => {
       <SidebarToggler isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
         <AiOutlineDoubleLeft />
       </SidebarToggler>
-      {isOpen ? <Heading margin="10px">Admin</Heading> : <Heading>A</Heading>}
+      {isOpen ? (
+        <Heading margin="10px" color="white">
+          Admin
+        </Heading>
+      ) : (
+        <Heading color="white"> A</Heading>
+      )}
       <StyledLink to="/admin">
         <BsBasket />
         {isOpen && <Heading size="20px">Buyurtmalar</Heading>}
       </StyledLink>
-      <StyledLink to="/admin/edit-products">
+      <StyledLink to="edit-products">
         <MdProductionQuantityLimits />
         {isOpen && <Heading size="20px">Mahsulotlar</Heading>}
       </StyledLink>
