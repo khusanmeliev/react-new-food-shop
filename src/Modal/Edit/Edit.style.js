@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Form = styled.form`
   width: 400px;
   height: auto;
-  background-color: blue;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border-radius: 8px;
 `;
 
 export const Inputs = styled.div`

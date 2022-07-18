@@ -6,13 +6,9 @@ import { Input } from "../../components/Input/Input";
 import { Form, Inputs, TextArea } from "./Edit.style";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import productApi from "../../api/productApi";
-import getAllProducts from "../../store/product/actions";
 
 const Edit = ({ product, modal }) => {
   const [values, setValues] = useState({});
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -24,7 +20,7 @@ const Edit = ({ product, modal }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <Flexbox flexDirection="row">
         <FaEdit style={{ fontSize: "25px" }} />
         <Heading margin="10px" size="25px">
@@ -38,12 +34,19 @@ const Edit = ({ product, modal }) => {
           height="100px"
           defaultValue={product.name}
           onChange={handleChange}
+          style={{ border: "1px solid black" }}
         />
-        <Input wd="90%" defaultValue={product.price} onChange={handleChange} />
+        <Input
+          wd="90%"
+          defaultValue={product.price}
+          onChange={handleChange}
+          style={{ border: "1px solid black" }}
+        />
         <TextArea
           rows="10"
           defaultValue={product.description}
           onChange={handleChange}
+          style={{ border: "1px solid black" }}
         ></TextArea>
       </Inputs>
       <Flexbox wd="100%" hg="60px">

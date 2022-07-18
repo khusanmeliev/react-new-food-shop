@@ -7,9 +7,11 @@ import Heading from "../../../components/Heading/Heading";
 import Modal from "../../../modal/Modal";
 import Flexbox from "../../../components/Flexbox/Flexbox";
 import useToggle from "../../../hooks/useToggle";
+import CreateProducts from "../../../modal/CreateProducts/CreateProducts";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [product, setProduct] = useState({});
   const modal = useToggle();
 
   return (
@@ -46,7 +48,7 @@ const Sidebar = () => {
         )}
       </Flexbox>
       <Modal isOpen={modal.isOpen} onClose={modal.close}>
-        {/* <CreateProducts /> */}
+        <CreateProducts product={product} modal={modal} />
       </Modal>
     </Wrapper>
   );
